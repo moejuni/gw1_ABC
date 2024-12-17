@@ -4,6 +4,10 @@ include_once "includes/css_js.inc.php";
 <!DOCTYPE html>
 <html lang="en">
 
+echo "dit is php";
+
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
