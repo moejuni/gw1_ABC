@@ -1,11 +1,11 @@
 @font-face {
   font-family: "frank";
-  src: url(/fonts/framd.ttf);
+  src: url(/assets/fonts/framd.ttf);
 }
 
 @font-face {
   font-family: "tekst";
-  src: url(/fonts/FRABK.TTF);
+  src: url(/assets/fonts/FRABK.TTF);
 }
 
 * {
@@ -19,7 +19,7 @@ body {
 
 .banner {
   padding: 1.8rem 1.8rem;
-  background-image: url(./images/b_img.png);
+  background-image: url(/images/b_img.png);
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -166,7 +166,7 @@ main {
     content: "";
     display: block;
     padding-top: 56.25%;
-    background-image: url(../images/1.png);
+    background-image: url(/images/3.png);
     background-size: cover;
     background-repeat: no-repeat;
     /* Placeholder background */
@@ -214,6 +214,100 @@ footer {
     li {
       color: white;
       font-family: "frank";
+    }
+  }
+}
+
+/*
+detail page
+*/
+
+.detail-page {
+  .detail {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    .info {
+      h2 {
+        margin-top: 2rem;
+        color: white;
+        font-size: 3rem;
+        font-family: "frank";
+        padding: 2.4rem 2rem;
+        background-color: rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+      }
+
+      p {
+        color: white;
+        font-family: "tekst";
+        margin-top: 1rem;
+        line-height: 1.2rem;
+        padding: 0 1.5rem;
+      }
+
+      .read-more-text {
+        display: none;
+      }
+
+      .read-more-text--show {
+        display: block;
+      }
+
+      .read-more-btn {
+        display: block;
+        text-decoration: none;
+        color: #b10d0d;
+        margin-top: 1.8rem;
+        margin-left: 1.3rem;
+        padding: 1rem 1.5rem;
+        background-color: white;
+        max-width: 150px;
+        border-radius: 5px;
+        font-family: "frank";
+        cursor: pointer;
+
+        &:hover {
+          background-color: #b10d0d;
+          color: white;
+        }
+      }
+    }
+
+    .fullimg {
+      margin: 2rem 3rem;
+      position: relative;
+
+      /* Apply styles to the .infoimg container */
+      .infoimg {
+        position: relative;
+      }
+
+      /* Add a before pseudo-element to the .infoimg container */
+      .infoimg::before {
+        content: " ";
+        /* Required for pseudo-element to display */
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("/images/map.png");
+        background-size: cover;
+        background-position: center;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        cursor: pointer;
+      }
+
+      .infoimg:hover::before {
+        opacity: 1;
+      }
+
+      img {
+        display: block;
+        box-shadow: -10px 8px 20px 0px rgba(0, 0, 0, 0.45);
+      }
     }
   }
 }
