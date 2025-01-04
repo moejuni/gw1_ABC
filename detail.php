@@ -8,7 +8,7 @@
     <link
         rel="stylesheet"
         href="https://meyerweb.com/eric/tools/css/reset/reset.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/detail.css" />
     <title>detail pagina</title>
 </head>
 
