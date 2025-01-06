@@ -15,18 +15,6 @@
       "assets/icomoon-C-EAromZ.svg"
     ]
   },
-  "fonts/FRABK.TTF": {
-    "file": "assets/FRABK-C09GCG42.TTF",
-    "src": "fonts/FRABK.TTF"
-  },
-  "fonts/framd.ttf": {
-    "file": "assets/framd-B_0DSNus.ttf",
-    "src": "fonts/framd.ttf"
-  },
-  "images/1.png": {
-    "file": "assets/1-Cgo4Eq9W.png",
-    "src": "images/1.png"
-  },
   "images/3.png": {
     "file": "assets/3-lbvvasFw.png",
     "src": "images/3.png"
@@ -35,17 +23,22 @@
     "file": "assets/b_img-CFjVDbTw.png",
     "src": "images/b_img.png"
   },
+  "images/map.png": {
+    "file": "assets/map-D6K4cmSW.png",
+    "src": "images/map.png"
+  },
   "js/index.js": {
-    "file": "assets/index-BGy-E5cp.js",
+    "file": "assets/index-0rYjftAc.js",
     "name": "index",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-LtW-47TY.css"
+      "assets/index-__8KRSiB.css"
     ],
     "assets": [
       "assets/b_img-CFjVDbTw.png",
-      "assets/3-lbvvasFw.png"
+      "assets/3-lbvvasFw.png",
+      "assets/map-D6K4cmSW.png"
     ]
   }
 }
