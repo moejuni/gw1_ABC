@@ -1,11 +1,11 @@
 @font-face {
   font-family: "frank";
-  src: url(/assets/fonts/framd.ttf);
+  src: url(../fonts/framd.ttf);
 }
 
 @font-face {
   font-family: "tekst";
-  src: url(/assets/fonts/FRABK.TTF);
+  src: url(../fonts/FRABK.TTF);
 }
 
 * {
@@ -19,27 +19,59 @@ body {
 
 .banner {
   padding: 1.8rem 1.8rem;
-  background-image: url(/images/b_img.png);
+  background-image: url("../images/b_img.png");
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
   z-index: 1;
 }
 
+body header nav .burger span img {
+  display: none;
+}
+
 header {
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 5px;
 
-  nav ul {
+  nav {
+    .moblogo {
+      display: none;
+    }
+  }
+
+  ul {
     display: flex;
     justify-content: space-around;
     padding: 1rem 1rem;
     align-items: center;
 
     li {
+      form {
+        input {
+          border: none;
+          padding: 10px;
+          border-radius: 5px;
+          margin-right: 5px;
+          outline: none;
+          font-family: "frank";
+          font-size: 1rem;
+          background-color: rgba(0, 0, 0, 0.15);
+          color: white;
+        }
+
+        .submit {
+          cursor: pointer;
+
+          &:hover {
+            opacity: 75%;
+          }
+        }
+      }
+
       a {
         color: white;
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         text-decoration: none;
         font-family: "frank";
         position: relative;
@@ -166,33 +198,96 @@ main {
     content: "";
     display: block;
     padding-top: 56.25%;
-    background-image: url(/images/3.png);
+    background-image: url("../images/3.png");
     background-size: cover;
     background-repeat: no-repeat;
-    /* Placeholder background */
+    transition: transform 0.3s ease;
   }
 
-  .container article:hover {
+  .container article:hover::before {
+    transform: scale(1.05);
+  }
+
+  /* .container article:hover {
     transition: all 0.4s ease;
-    opacity: 35%;
   }
 
   .container article:hover::after {
-    content: "Discover more..";
+    content: "";
     position: absolute;
-    bottom: 10%;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     background: var(--main-red);
     color: white;
+    background-color: #050505;
+    width: 100%;
     padding: 0 1rem 0 1rem;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.4rem;
     font-weight: bold;
-    font-family: "frank";
-    opacity: 1;
+    font-family: 'frank';
+    opacity: 100%;
     pointer-events: none;
+    text-align: center;
+    padding: 1rem 1rem;
+    opacity: 85%;
+    transition: transform 0.4s ease, opacity 0.4s ease;
   }
+
+  .container article::after {
+    content: "";
+    position: absolute;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    background: var(--main-red);
+    color: white;
+    background-color: #050505;
+    width: 100%;
+    padding: 0 1rem;
+    border-radius: 5px;
+    font-size: 1.7rem;
+    font-weight: bold;
+    font-family: 'frank';
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+    padding: 1rem;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  } */
+}
+
+main .grid .container {
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+article {
+  transition: transform 0.4s ease;
+}
+
+.text {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.3rem;
+  position: absolute;
+  bottom: -100%;
+  width: 100%;
+  transition: bottom 0.3s ease;
+}
+
+.container article:hover .text {
+  bottom: 0;
+}
+
+.container article:hover {
+  transform: scale(1.05);
 }
 
 footer {
@@ -222,100 +317,103 @@ footer {
 detail page
 */
 
-.detail-page {
-  .detail {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-
-    .info {
-      h2 {
-        margin-top: 2rem;
-        color: white;
-        font-size: 3rem;
-        font-family: "frank";
-        padding: 2.4rem 2rem;
-        background-color: rgba(0, 0, 0, 0.15);
-        border-radius: 5px;
-      }
-
-      p {
-        color: white;
-        font-family: "tekst";
-        margin-top: 1rem;
-        line-height: 1.2rem;
-        padding: 0 1.5rem;
-      }
-
-      .read-more-text {
-        display: none;
-      }
-
-      .read-more-text--show {
-        display: block;
-      }
-
-      .read-more-btn {
-        display: block;
-        text-decoration: none;
-        color: #b10d0d;
-        margin-top: 1.8rem;
-        margin-left: 1.3rem;
-        padding: 1rem 1.5rem;
-        background-color: white;
-        max-width: 150px;
-        border-radius: 5px;
-        font-family: "frank";
-        cursor: pointer;
-
-        &:hover {
-          background-color: #b10d0d;
-          color: white;
-        }
-      }
-    }
-
-    .fullimg {
-      margin: 2rem 3rem;
-      position: relative;
-
-      /* Apply styles to the .infoimg container */
-      .infoimg {
-        position: relative;
-      }
-
-      /* Add a before pseudo-element to the .infoimg container */
-      .infoimg::before {
-        content: " ";
-        /* Required for pseudo-element to display */
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: url("/images/map.png");
-        background-size: cover;
-        background-position: center;
-        opacity: 0;
-        transition: opacity 0.6s ease;
-        cursor: pointer;
-      }
-
-      .infoimg:hover::before {
-        opacity: 1;
-      }
-
-      img {
-        display: block;
-        box-shadow: -10px 8px 20px 0px rgba(0, 0, 0, 0.45);
-      }
-    }
-  }
-}
-
 @media (max-width: 800px) {
   body main .grid {
     .container {
-      max-height: 90vh;
+      max-height: 80vh;
+    }
+  }
+
+  main .information {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  body header nav .nav-menu {
+    .logo {
+      display: none;
+    }
+
+    position: fixed;
+    left: -100%;
+    top: 30px;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 70%;
+    gap: 1.2rem;
+    text-align: center;
+    transition: 0.3s;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  body header nav .moblogo {
+    display: block;
+
+    img {
+      max-width: 100px;
+      margin: 2rem;
+    }
+  }
+
+  body header nav .burger span img {
+    display: block;
+    max-width: 50px;
+    margin-right: 2rem;
+    cursor: pointer;
+  }
+
+  body header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (max-width: 550px) {
+  body main {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  main .information {
+    .buttons {
+      padding-top: 3.3rem;
     }
   }
 }
+
+@media (max-width: 420px) {
+  body {
+    header nav .nav-menu {
+      .logo {
+        display: none;
+      }
+
+      .nav-item {
+        a {
+          font-size: 1.2rem;
+        }
+      }
+
+      position: fixed;
+      left: -100%;
+      top: 10px;
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.9);
+      width: 60%;
+      gap: 3rem;
+      text-align: center;
+      transition: 0.3s;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+}
+
+/* responsive detail page */

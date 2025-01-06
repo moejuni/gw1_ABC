@@ -1,10 +1,26 @@
 <?php
 include_once "header.inc.php";
 
+<<<<<<< HEAD
 $host = "localhost";
 $dbname = "groepswerk";
 $username = "root";
 $password = "root";
+=======
+$host = 'localhost';
+$dbname = 'groepswerk';
+$dbuser = 'root';
+$dbpass = 'root';
+
+session_start();
+
+
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    header('Location: login.php');
+    exit;
+}
+
+>>>>>>> ee14d3a65546e3ef6e9bfdd344d5a59c285018e1
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
@@ -16,6 +32,10 @@ try {
 $sql = "SELECT id, title, year, description, location, shdescription, image FROM battles";
 $stmt = $pdo->query($sql);
 $battles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+<<<<<<< HEAD
+=======
+
+>>>>>>> ee14d3a65546e3ef6e9bfdd344d5a59c285018e1
 ?>
 
 <div class="container mt-5">

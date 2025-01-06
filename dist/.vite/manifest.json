@@ -36,17 +36,18 @@
     "src": "images/map.png"
   },
   "js/index.js": {
-    "file": "assets/index-0rYjftAc.js",
+    "file": "assets/index-CIDahtox.js",
     "name": "index",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-__8KRSiB.css"
+      "assets/index-D8lcZEOC.css"
     ],
     "assets": [
+      "assets/framd-B_0DSNus.ttf",
+      "assets/FRABK-C09GCG42.TTF",
       "assets/b_img-CFjVDbTw.png",
-      "assets/3-lbvvasFw.png",
-      "assets/map-D6K4cmSW.png"
+      "assets/3-lbvvasFw.png"
     ]
   }
 }
