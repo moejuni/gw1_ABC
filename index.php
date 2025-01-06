@@ -2,11 +2,11 @@
 include_once "includes/css_js.inc.php";
 require('db.inc.php');
 
-$battles = getBattles();
-print "<pre>";
-print_r($battles);
-print "<pre>";
-?>
+ $battles = getBattleNames();
+// print "<pre>";
+// print_r($titles);
+// print "<pre>";
+// ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,10 +15,10 @@ print "<pre>";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEBSITE HOMEPAGE</title>
+    <title>Battle Archives</title>
     <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="shortcut icon" type="x-icon" href="/assets/img/icon.png" />
+    <link rel="shortcut icon" type="x-icon" href="images/icon.png" />
     <script type="module" src="./dist/<?= $jsPath ?>"></script>
 </head>
 
@@ -28,13 +28,16 @@ print "<pre>";
             <nav class="navbar">
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Search Battles</a>
+                        <form action="index.php" method="post">
+<input type="text" placeholder="Search Battles">
+<input type="submit" value="Search" class="submit">
+                        </form>
                     </li>
                     <li class="logo">
-                        <img src="/assets/img/logo_ba.png" alt="logo" />
+                        <img src="images/logo_ba.png" alt="logo" />
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#">About</a></li>
                     <li class="nav-item">
@@ -42,39 +45,31 @@ print "<pre>";
                     </li>
                 </ul>
                 <div class="moblogo">
-                    <img src="/assets/img/logo_ba.png" alt="moblogo" />
+                    <img src="images/logo_ba.png" alt="moblogo" />
                 </div>
-                <section class="burger">
-                    <span><img src="/assets/img/hamburger.png" alt="icon" /></span>
-                </section>
+               <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+               </div>
             </nav>
         </header>
 
         <main>
-            <section class="grid">
-                <div class="container">
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                    <a href="detail.php"><article></article></a>
-                </div>
-            </section>
+        <section class="grid">
+        <div class="container">
+            <?php foreach ($battles as $battle): ?>
+                
+            <a href="detail.php?id=<?=$battle['id']; ?>"> 
+
+                    <article>
+                        <p class="text"><?= htmlspecialchars($battle['title']); ?></p>
+                    </article>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </section>  
+
 
             <section class="information">
                 <h2>Explore the world's most iconic historic battles.</h2>
@@ -109,7 +104,6 @@ print "<pre>";
             <li>Cookies Policy</li>
         </ul>
     </footer>
-    <script src="main.js"></script>
 </body>
 
 </html>

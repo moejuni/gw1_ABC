@@ -23,3 +23,15 @@ function getBattles() {
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function getBattleNames() {
+    $stmt = connectToDB()->prepare(query: "SELECT id, title from battles order by title asc");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getDesc() {
+    $stmt = connectToDB()->prepare(query: "SELECT description from battles");
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

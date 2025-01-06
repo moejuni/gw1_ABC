@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'frank';
-    src: url(/assets/fonts/framd.ttf);
+    src: url('../fonts/framd.ttf');
 }
 
 @font-face {
     font-family: 'tekst';
-    src: url(/assets/fonts/FRABK.TTF);
+    src: url('../fonts/FRABK.TTF');
 }
 
 * {
@@ -19,7 +19,7 @@ body {
 
 .banner {
     padding: 1.8rem 1.8rem;
-    background-image: url(/assets/img/b_img.png);
+    background-image: url('../images/b_img.png');
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -46,7 +46,7 @@ header {
 
             a {
                 color: white;
-                font-size: 1.5rem;
+                font-size: 1.7rem;
                 text-decoration: none;
                 font-family: 'frank';
                 position: relative;
@@ -171,21 +171,20 @@ footer {
             margin: 2rem 3rem;
             position: relative;
 
-            /* Apply styles to the .infoimg container */
+
             .infoimg {
                 position: relative;
             }
 
-            /* Add a before pseudo-element to the .infoimg container */
+
             .infoimg::before {
                 content: " ";
-                /* Required for pseudo-element to display */
                 position: absolute;
                 top: 0;
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-image: url('/assets/img/map.png');
+                background-image: url('../images/map.png');
                 background-size: cover;
                 background-position: center;
                 opacity: 0;
@@ -205,6 +204,18 @@ footer {
                 box-shadow: -10px 8px 20px 0px rgba(0, 0, 0, 0.45);
 
             }
+        }
+    }
+}
+
+main .back-link {
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.2rem;
+
+        &:hover {
+            border-bottom: 2px solid white;
         }
     }
 }
