@@ -5,7 +5,7 @@ function connectToDB()
     $db_host = '127.0.0.1';
     $db_user = 'root';
     $db_password = 'root';
-    $db_db = 'groepswerk_battles';
+    $db_db = 'groepswerk';
     $db_port = 8889;
 
     try {
@@ -18,19 +18,22 @@ function connectToDB()
     return $db;
 }
 
-function getBattles() {
+function getBattles()
+{
     $stmt = connectToDB()->prepare("SELECT * FROM battles ORDER BY title ASC");
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getBattleNames() {
+function getBattleNames()
+{
     $stmt = connectToDB()->prepare(query: "SELECT id, title from battles order by title asc");
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getDesc() {
+function getDesc()
+{
     $stmt = connectToDB()->prepare(query: "SELECT description from battles");
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
