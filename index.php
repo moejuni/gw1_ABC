@@ -6,6 +6,12 @@ require('db.inc.php');
 // print "<pre>";
 // print_r($titles);
 // print "<pre>";
+if(isset($_POST['searchterm']) && !empty($_POST['searchterm'])) {
+    $battles = searchbattles($_POST['searchterm']);
+} else {
+    $battles = getBattleNames();
+}
+
 // ?>
 
 <!DOCTYPE html>
@@ -32,7 +38,7 @@ require('db.inc.php');
                     </li>
                     <li class="nav-item">
                         <form action="index.php" method="post">
-<input type="text" placeholder="Search Battles">
+<input type="text" name="searchterm" placeholder="Search Battles" value="<?= isset($_POST['searchterm']) ? htmlspecialchars($_POST['searchterm']) : ''; ?> ">
 <input type="submit" value="Search" class="submit">
                         </form>
                     </li>

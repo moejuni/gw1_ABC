@@ -35,3 +35,18 @@ function getDesc() {
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function searchbattles($searchterm) {
+    $searchterm = "%" . $searchterm . "%";
+
+  
+    $stmt = connectToDB()->prepare("SELECT id, title FROM battles WHERE title LIKE :searchterm");
+
+    
+    $stmt->bindParam(':searchterm', $searchterm, PDO::PARAM_STR);
+
+  
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

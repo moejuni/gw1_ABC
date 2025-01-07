@@ -26,9 +26,7 @@ body {
   z-index: 1;
 }
 
-body header nav .burger span img {
-  display: none;
-}
+
 
 header {
   background-color: rgba(0, 0, 0, 0.15);
@@ -36,6 +34,10 @@ header {
 
   nav {
     .moblogo {
+      display: none;
+    }
+
+    .hamburger {
       display: none;
     }
   }
@@ -351,6 +353,8 @@ detail page
       display: none;
     }
 
+
+
     position: fixed;
     left: -100%;
     top: 30px;
@@ -364,6 +368,8 @@ detail page
     border-bottom-right-radius: 10px;
 
   }
+
+
 
   .nav-menu.active {
     left: 0;
@@ -380,22 +386,42 @@ detail page
     }
   }
 
-  body header nav .burger span img {
-    display: block;
-    max-width: 50px;
-    margin-right: 2rem;
-    cursor: pointer;
-  }
-
-  body header nav {
+  body section header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .hamburger {
+      display: block;
+      cursor: pointer;
+
+      .bar {
+        display: block;
+        background-color: #050505;
+        width: 50px;
+        height: 6px;
+        margin-right: 2rem;
+        margin-top: 10px;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+
+    .hamburger.active .bar:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+      opacity: 0;
+
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+
   }
-
-
-
-
 }
 
 @media (max-width: 550px) {
