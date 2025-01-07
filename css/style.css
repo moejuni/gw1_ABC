@@ -1,16 +1,16 @@
 @font-face {
-  font-family: 'frank';
+  font-family: "frank";
   src: url(../fonts/framd.ttf);
 }
 
 @font-face {
-  font-family: 'tekst';
+  font-family: "tekst";
   src: url(../fonts/FRABK.TTF);
 }
 
 * {
   box-sizing: border-box;
-  font-family: 'frank';
+  font-family: "frank";
 }
 
 body {
@@ -19,7 +19,7 @@ body {
 
 .banner {
   padding: 1.8rem 1.8rem;
-  background-image: url('../images/b_img.png');
+  background-image: url("../images/b_img.png");
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
@@ -40,7 +40,6 @@ header {
     }
   }
 
-
   ul {
     display: flex;
     justify-content: space-around;
@@ -48,7 +47,6 @@ header {
     align-items: center;
 
     li {
-
       form {
         input {
           border: none;
@@ -75,7 +73,7 @@ header {
         color: white;
         font-size: 1.7rem;
         text-decoration: none;
-        font-family: 'frank';
+        font-family: "frank";
         position: relative;
         padding: 5px 5px;
       }
@@ -94,7 +92,6 @@ header {
         z-index: -1;
         transform-origin: right;
         border-radius: 5px;
-
       }
 
       a:hover:before {
@@ -105,7 +102,6 @@ header {
       a:hover {
         color: #b10d0d;
       }
-
     }
 
     .logo img {
@@ -113,8 +109,6 @@ header {
     }
   }
 }
-
-
 
 main {
   display: grid;
@@ -125,7 +119,7 @@ main {
 
     h2 {
       color: white;
-      font-family: 'frank';
+      font-family: "frank";
       font-size: 2rem;
       max-width: 400px;
       line-height: 2.2rem;
@@ -136,7 +130,7 @@ main {
       max-width: 485px;
       line-height: 1.2rem;
       padding-top: 10px;
-      font-family: 'tekst';
+      font-family: "tekst";
     }
 
     .buttons {
@@ -158,7 +152,7 @@ main {
         text-align: center;
         text-decoration: none;
         color: white;
-        font-family: 'frank';
+        font-family: "frank";
         font-size: 1.1rem;
         border-radius: 5px;
 
@@ -169,7 +163,6 @@ main {
         &:hover {
           background-color: antiquewhite;
         }
-
       }
 
       .con {
@@ -205,7 +198,7 @@ main {
     content: "";
     display: block;
     padding-top: 56.25%;
-    background-image: url('../images/3.png');
+    background-image: url("../images/3.png");
     background-size: cover;
     background-repeat: no-repeat;
     transition: transform 0.3s ease;
@@ -287,7 +280,6 @@ article {
   bottom: -100%;
   width: 100%;
   transition: bottom 0.3s ease;
-
 }
 
 .container article:hover .text {
@@ -298,8 +290,6 @@ article {
   transform: scale(1.05);
 }
 
-
-
 footer {
   background-color: #050505;
   display: flex;
@@ -309,7 +299,7 @@ footer {
 
   p {
     color: white;
-    font-family: 'frank';
+    font-family: "frank";
   }
 
   ul {
@@ -318,7 +308,7 @@ footer {
 
     li {
       color: white;
-      font-family: 'frank';
+      font-family: "frank";
     }
   }
 }
@@ -327,14 +317,10 @@ footer {
 detail page
 */
 
-
-
-
 @media (max-width: 800px) {
   body main .grid {
     .container {
       max-height: 80vh;
-
     }
   }
 
@@ -343,8 +329,6 @@ detail page
     flex-direction: column;
     gap: 1rem;
   }
-
-
 
   body header nav .nav-menu {
     .logo {
@@ -355,21 +339,18 @@ detail page
     left: -100%;
     top: 30px;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.90);
+    background-color: rgba(0, 0, 0, 0.9);
     width: 70%;
     gap: 1.2rem;
     text-align: center;
     transition: 0.3s;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-
   }
 
   .nav-menu.active {
     left: 0;
   }
-
-
 
   body header nav .moblogo {
     display: block;
@@ -392,14 +373,9 @@ detail page
     justify-content: space-between;
     align-items: center;
   }
-
-
-
-
 }
 
 @media (max-width: 550px) {
-
   body main {
     display: flex;
     flex-direction: column-reverse;
@@ -411,7 +387,6 @@ detail page
     }
   }
 }
-
 
 @media (max-width: 420px) {
   body {
@@ -430,17 +405,15 @@ detail page
       left: -100%;
       top: 10px;
       flex-direction: column;
-      background-color: rgba(0, 0, 0, 0.90);
+      background-color: rgba(0, 0, 0, 0.9);
       width: 60%;
       gap: 3rem;
       text-align: center;
       transition: 0.3s;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
-
     }
   }
 }
-
 
 /* responsive detail page */

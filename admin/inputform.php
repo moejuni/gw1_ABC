@@ -1,17 +1,14 @@
 <?php
 include_once "header.inc.php";
-
-// session_start();
-
-// if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-//     header('Location: login.php');
-//     exit;
-// }
 ?>
+<?php
+session_start();
 
-<div class="container mt-3 text-end">
-    <a href="logout.php" class="btn btn-danger">Logout</a>
-</div>
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    header('Location: login.php');
+    exit;
+}
+?>
 
 <div class="container mt-5">
     <h2 class="text-center text-primary">Input Form</h2>
@@ -31,7 +28,6 @@ include_once "header.inc.php";
         <button type="submit" class="btn btn-success">Verzenden</button>
     </form>
 </div>
-
 <div class="main_content_iner ">
     <div class="container-fluid p-0 sm_padding_15px">
         <div class="row justify-content-center">
@@ -45,6 +41,7 @@ include_once "header.inc.php";
                         </div>
                     </div>
                     <div class="white_card_body">
+
                         <h6 class="card-subtitle mb-2">Here’s a quick example to demonstrate Bootstrap’s form styles. Keep reading for documentation on required classes, form layout, and more.</h6>
                         <form>
                             <div class="mb-3">
@@ -75,6 +72,8 @@ include_once "header.inc.php";
                         </div>
                     </div>
                     <div class="white_card_body">
+
+
                         <h6 class="card-subtitle mb-2">Create horizontal forms with the grid by adding the <code class="highlighter-rouge">.row</code> class to form groups and using the <code class="highlighter-rouge">.col-*-*</code> classes to specify the width of your labels and controls. Be sure to add <code class="highlighter-rouge">.col-form-label</code> to your <code class="highlighter-rouge">&lt;label&gt;</code>s as well so they’re vertically centered with their associated form controls.</h6>
                         <form>
                             <div class="row mb-3">
@@ -95,15 +94,21 @@ include_once "header.inc.php";
                                     <div class="col-sm-8">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked="">
-                                            <label class="form-label form-check-label" for="gridRadios1">First radio</label>
+                                            <label class="form-label form-check-label" for="gridRadios1">
+                                                First radio
+                                            </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                            <label class="form-label form-check-label" for="gridRadios2">Second radio</label>
+                                            <label class="form-label form-check-label" for="gridRadios2">
+                                                Second radio
+                                            </label>
                                         </div>
                                         <div class="form-check disabled">
                                             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled="">
-                                            <label class="form-label form-check-label" for="gridRadios3">Third disabled radio</label>
+                                            <label class="form-label form-check-label" for="gridRadios3">
+                                                Third disabled radio
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -113,13 +118,74 @@ include_once "header.inc.php";
                                 <div class="col-sm-8">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                        <label class="form-label form-check-label" for="gridCheck1">Example checkbox</label>
+                                        <label class="form-label form-check-label" for="gridCheck1">
+                                            Example checkbox
+                                        </label>
                                     </div>
                                 </div>
                             </div>
                             <div class=" row">
                                 <div class="col-sm-10">
                                     <button type="submit" class="btn btn-primary">Sign in</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Inline Form</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+
+
+                        <h6 class="card-subtitle mb-2">Use the <code class="highlighter-rouge">grid and utilities</code> class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.</h6>
+                        <h5 class="card-title font-16">Inline Form</h5>
+                        <form class="row g-3">
+                            <div class="col-auto">
+                                <label for="staticEmail2" class="form-label visually-hidden">Email</label>
+                                <input type="text" readonly="" class="form-control-plaintext" id="staticEmail2" value="email@example.com">
+                            </div>
+                            <div class="col-auto">
+                                <label for="inputPassword2" class="form-label visually-hidden">Password</label>
+                                <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+                            </div>
+                        </form>
+                        <h5 class="card-title font-16 mt-3">Auto-sizing Form</h5>
+                        <form>
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <label class="form-label visually-hidden" for="inlineFormInput">Name</label>
+                                    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe">
+                                </div>
+                                <div class="col-auto">
+                                    <label class="form-label visually-hidden" for="inlineFormInputGroup">Username</label>
+                                    <div class="input-group mb-2">
+                                        <div class="input-group-text">
+                                            <div class="">@</div>
+                                        </div>
+                                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" id="autoSizingCheck">
+                                        <label class="form-label form-check-label" for="autoSizingCheck">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -176,7 +242,9 @@ include_once "header.inc.php";
                                 <div class="mb-3">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="gridCheck">
-                                        <label class="form-label form-check-label" for="gridCheck">Check me out</label>
+                                        <label class="form-label form-check-label" for="gridCheck">
+                                            Check me out
+                                        </label>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Sign in</button>
