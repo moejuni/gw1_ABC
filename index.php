@@ -1,64 +1,76 @@
 <?php
 include_once "includes/css_js.inc.php";
-?>
+require('db.inc.php');
+
+ $battles = getBattleNames();
+// print "<pre>";
+// print_r($titles);
+// print "<pre>";
+// ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
-echo "dit is php";
-
-?>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEBSITE HOMEPAGE</title>
+    <title>Battle Archives</title>
     <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" type="x-icon" href="images/icon.png" />
     <script type="module" src="./dist/<?= $jsPath ?>"></script>
 </head>
 
 <body>
     <section class="banner">
         <header>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Search Battles</a></li>
-                    <li class="logo">
-                        <img src="/images/logo_ba.png" alt="logo" />
+            <nav class="navbar">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Home</a>
                     </li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Admin Page</a></li>
+                    <li class="nav-item">
+                        <form action="index.php" method="post">
+<input type="text" placeholder="Search Battles">
+<input type="submit" value="Search" class="submit">
+                        </form>
+                    </li>
+                    <li class="logo">
+                        <img src="images/logo_ba.png" alt="logo" />
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Admin Page</a>
+                    </li>
                 </ul>
+                <div class="moblogo">
+                    <img src="images/logo_ba.png" alt="moblogo" />
+                </div>
+               <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+               </div>
             </nav>
         </header>
 
         <main>
-            <section class="grid">
-                <div class="container">
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                    <article></article>
-                </div>
-            </section>
+        <section class="grid">
+        <div class="container">
+            <?php foreach ($battles as $battle): ?>
+                
+            <a href="detail.php?id=<?=$battle['id']; ?>"> 
+
+                    <article>
+                        <p class="text"><?= htmlspecialchars($battle['title']); ?></p>
+                    </article>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </section>  
+
+
             <section class="information">
                 <h2>Explore the world's most iconic historic battles.</h2>
                 <p>
@@ -83,6 +95,7 @@ echo "dit is php";
             </section>
         </main>
     </section>
+
     <footer>
         <p>&copy; Battle archives 2024-2025</p>
         <ul>
