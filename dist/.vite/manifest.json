@@ -15,6 +15,14 @@
       "assets/icomoon-C-EAromZ.svg"
     ]
   },
+  "fonts/FRABK.TTF": {
+    "file": "assets/FRABK-C09GCG42.TTF",
+    "src": "fonts/FRABK.TTF"
+  },
+  "fonts/framd.ttf": {
+    "file": "assets/framd-B_0DSNus.ttf",
+    "src": "fonts/framd.ttf"
+  },
   "images/3.png": {
     "file": "assets/3-lbvvasFw.png",
     "src": "images/3.png"
