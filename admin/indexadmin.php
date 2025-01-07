@@ -1,23 +1,194 @@
 <?php
-$_SERVER["admin"] = true;
-include_once "../includes/css_js.inc.php";
+include_once "header.inc.php";
+
+// session_start();
+
+// if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+//     header('Location: login.php');
+//     exit;
+// }
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADMIN HOMEPAGE</title>
-    <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
-    <script type="module" src="../dist/<?= $jsPath ?>"></script>
-</head>
+<div class="container mt-3 text-end">
+    <a href="logout.php" class="btn btn-danger">Logout</a>
+</div>
 
-<body>
-    <?= "php works on admin page" ?>
-    <p class="icon-location2"></p>
-    <img src="images/sample.jpg" alt="">
-</body>
+<div class="container mt-5">
+    <h2 class="text-center text-primary">Input Form</h2>
+    <form action="processform.php" method="POST" class="mt-4">
+        <div class="mb-3">
+            <label for="name" class="form-label">Naam</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Vul je naam in" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Vul je e-mail in" required>
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Bericht</label>
+            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Typ je bericht" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Verzenden</button>
+    </form>
+</div>
 
-</html>
+<div class="main_content_iner ">
+    <div class="container-fluid p-0 sm_padding_15px">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Basic Form</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <h6 class="card-subtitle mb-2">Here’s a quick example to demonstrate Bootstrap’s form styles. Keep reading for documentation on required classes, form layout, and more.</h6>
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-label form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Horizontal form</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <h6 class="card-subtitle mb-2">Create horizontal forms with the grid by adding the <code class="highlighter-rouge">.row</code> class to form groups and using the <code class="highlighter-rouge">.col-*-*</code> classes to specify the width of your labels and controls. Be sure to add <code class="highlighter-rouge">.col-form-label</code> to your <code class="highlighter-rouge">&lt;label&gt;</code>s as well so they’re vertically centered with their associated form controls.</h6>
+                        <form>
+                            <div class="row mb-3">
+                                <label for="inputEmail3" class="form-label col-sm-4 col-form-label">Email</label>
+                                <div class="col-sm-8">
+                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputPassword3" class="form-label col-sm-4 col-form-label">Password</label>
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                </div>
+                            </div>
+                            <fieldset class="">
+                                <div class="row">
+                                    <div class="col-form-label col-sm-4 pt-0">Radios</div>
+                                    <div class="col-sm-8">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked="">
+                                            <label class="form-label form-check-label" for="gridRadios1">First radio</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                            <label class="form-label form-check-label" for="gridRadios2">Second radio</label>
+                                        </div>
+                                        <div class="form-check disabled">
+                                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled="">
+                                            <label class="form-label form-check-label" for="gridRadios3">Third disabled radio</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <div class=" row">
+                                <div class="col-sm-4">Checkbox</div>
+                                <div class="col-sm-8">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                        <label class="form-label form-check-label" for="gridCheck1">Example checkbox</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" row">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="white_card card_height_100 mb_30">
+                    <div class="white_card_header">
+                        <div class="box_header m-0">
+                            <div class="main-title">
+                                <h3 class="m-0">Form row</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="white_card_body">
+                        <div class="card-body">
+                            <form>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="inputEmail4">Email</label>
+                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                    </div>
+                                    <div class=" col-md-6">
+                                        <label class="form-label" for="inputPassword4">Password</label>
+                                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="inputAddress">Address</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="inputAddress2">Address 2</label>
+                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                </div>
+                                <div class="row mb-3">
+                                    <div class=" col-md-6">
+                                        <label class="form-label" for="inputCity">City</label>
+                                        <input type="text" class="form-control" id="inputCity">
+                                    </div>
+                                    <div class=" col-md-4">
+                                        <label class="form-label" for="inputState">State</label>
+                                        <select id="inputState" class="form-select">
+                                            <option selected="">Choose...</option>
+                                            <option>...</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="form-label" for="inputZip">Zip</label>
+                                        <input type="text" class="form-control" id="inputZip">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                                        <label class="form-label form-check-label" for="gridCheck">Check me out</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+include_once "footer.inc.php";
+?>
