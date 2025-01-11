@@ -1,18 +1,6 @@
 <?php
 include_once "header.inc.php";
-
-// Databaseverbinding
-$host = "localhost";
-$dbname = "groepswerk";
-$username = "root";
-$password = "root";
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Databaseverbinding mislukt: " . $e->getMessage());
-}
-
+include_once "db.inc.php";
 // Haal de ID op uit de URL
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
