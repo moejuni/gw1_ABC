@@ -1,31 +1,9 @@
 <?php
 include_once "header.inc.php";
-
-$host = 'localhost';
-$dbname = 'groepswerk';
-$dbuser = 'root';
-$dbpass = 'root';
-
-session_start();
-
-
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header('Location: login.php');
-    exit;
-}
-
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Databaseverbinding mislukt: " . $e->getMessage());
-}
-
+include_once "db.inc.php";
 $sql = "SELECT id, title, year, description, location, shdescription, image FROM battles";
 $stmt = $pdo->query($sql);
 $battles = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <div class="container mt-5">
@@ -62,7 +40,7 @@ $battles = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= $battle['location'] ?></td>
                     <td><?= $battle['shdescription'] ?></td>
                     <td>
-                        <a href="view.php?id=<?= $battle['id'] ?>" class="btn btn-info btn-sm">Bekijk</a>
+                        <a href="../detail.php?id=<?= $battle['id'] ?>" class="btn btn-info btn-sm" target="_blank">Bekijk</a>
                         <a href="edit.php?id=<?= $battle['id'] ?>" class="btn btn-warning btn-sm">Bewerk</a>
                         <a href="delete.php?id=<?= $battle['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Weet je zeker dat je dit item wilt verwijderen?');">Verwijder</a>
                     </td>

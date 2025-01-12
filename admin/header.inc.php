@@ -2,16 +2,6 @@
 $_SERVER["admin"] = true;
 include_once "../includes/css_js.inc.php";
 
-
-session_start();
-
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header('Location: login.php');
-    exit;
-}
-
-
-
 // Dynamisch CSS-bestanden laden
 $cssDir = __DIR__ . '/bootstrap-css';
 $cssFiles = array_diff(scandir($cssDir), ['.', '..']);
