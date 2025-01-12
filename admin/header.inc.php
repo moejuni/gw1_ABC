@@ -15,7 +15,6 @@ $cssFiles = array_diff(scandir($cssDir), ['.', '..']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN HOMEPAGE</title>
 
-    <!-- Dynamisch geladen CSS-bestanden -->
     <?php
     foreach ($cssFiles as $file) {
         if (pathinfo($file, PATHINFO_EXTENSION) === 'css') {
@@ -24,7 +23,6 @@ $cssFiles = array_diff(scandir($cssDir), ['.', '..']);
     }
     ?>
 
-    <!-- Vite gegenereerde CSS en JS -->
     <link rel="stylesheet" href="../dist/<?= $cssPath ?>" />
     <script type="module" src="../dist/<?= $jsPath ?>"></script>
 </head>
@@ -49,11 +47,9 @@ $cssFiles = array_diff(scandir($cssDir), ['.', '..']);
                         <a class="nav-link" href="list.php">List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">Settings</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
+
                 </ul>
             </div>
         </div>
