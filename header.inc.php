@@ -5,6 +5,7 @@ if (isset($_POST['searchterm']) && !empty($_POST['searchterm'])) {
 } else {
     $battles = getBattleNames();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +43,7 @@ if (isset($_POST['searchterm']) && !empty($_POST['searchterm'])) {
                     </a>
                     <li><a class="nav-link" href="about.php">About</a></li>
                     <li>
-                        <a class="login" href="#">Login</a>
+                        <a class="login" href="admin/login.php">Log in</a>
                     </li>
                 </ul>
                 <div class="moblogo">
@@ -54,27 +55,6 @@ if (isset($_POST['searchterm']) && !empty($_POST['searchterm'])) {
                     <span class="bar"></span>
                 </div>
 
-                <form class="login-form" action="index.php" method="post">
-                    <label class="registered" for="newuser">Choose username</label>
-                    <input class="registered" type="text">
-                    <label class="registered" for="newpass">Choose password</label>
-                    <input class="registered" type="password">
-                    <label class="registered" for="email">Enter email</label>
-                    <input class="registered" type="text">
-                    <input class="registered" id="subr" type="submit" value="register">
 
-                    <label class="logged" for="username">Username</label>
-                    <input class="logged" type="text">
-                    <label class="logged" for="password">Password</label>
-                    <input class="logged" type="password">
-                    <input class="sub" type="submit" value="Login">
-                    <p class="logged">Don't have an account?
-                        <a class="reg-menu" href="#">register here!</a>
-                    </p>
-                    <p class="registered">Already have an account?
-                        <a class="log-menu" href="#">Log in..</a>
-                    </p>
-
-                </form>
             </nav>
         </header>
