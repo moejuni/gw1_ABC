@@ -18,6 +18,7 @@ body {
 }
 
 .banner {
+  height: 100vh;
   padding: 1.8rem 1.8rem;
   background-image: url("../images/b_img.png");
   background-size: cover;

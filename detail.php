@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     $battle = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$battle) {
-        echo "Battle not found.";
+        header("location: index.php");
         exit;
     }
 
