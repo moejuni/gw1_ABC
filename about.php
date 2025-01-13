@@ -19,14 +19,14 @@
             <nav>
                 <ul class="nav-menu">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="#">Search Battles</a></li>
+                    <li><a href="index.php">Search Battles</a></li>
                     <a href="index.php" class="logo">
                         <li>
                             <img src="images/logo_ba.png" alt="logo" />
                         </li>
                     </a>
                     <li><a href="about.php">About</a></li>
-                    <li><a href="#">Admin Page</a></li>
+                    <li><a href="admin/login.php">Log In</a></li>
                 </ul>
                 <div class="hamburger">
                     <span class="bar"></span>

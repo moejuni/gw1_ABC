@@ -57,7 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if (!empty($error)): ?>
                 <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
             <?php endif; ?>
-            <button type="submit" class="btn btn-primary w-100">Inloggen</button>
+            <button type="submit" class="btn btn-primary w-100 mb-3">Inloggen</button>
+            <!--  knop om terug te gaan naar de homepagina -->
+            <a href="../index.php" class="btn btn-secondary w-100">Terug naar Home</a>
         </form>
     </div>
 </body>
