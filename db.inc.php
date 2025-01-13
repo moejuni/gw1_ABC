@@ -20,7 +20,7 @@ function connectToDB()
 
 function getBattles()
 {
-    $stmt = connectToDB()->prepare("SELECT * FROM battles ORDER BY title ASC");
+    $stmt = connectToDB()->prepare("SELECT *, latitude, longitude FROM battles ORDER BY title ASC");
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -34,7 +34,23 @@ function getBattleNames()
 
 function getDesc()
 {
-    $stmt = connectToDB()->prepare(query: "SELECT description from battles");
+    $stmt = connectToDB()->prepare(query: "SELECT shdescription, description from battles");
     $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function searchbattles($searchterm)
+{
+    $searchterm = "%" . $searchterm . "%";
+
+
+    $stmt = connectToDB()->prepare("SELECT id, title FROM battles WHERE title LIKE :searchterm");
+
+
+    $stmt->bindParam(':searchterm', $searchterm, PDO::PARAM_STR);
+
+
+    $stmt->execute();
+
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

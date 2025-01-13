@@ -1,27 +1,36 @@
 <?php
-include_once('db.inc.php');
-
-
-$description = getDesc();
-$battles = getBattleNames();
-
+require('db.inc.php');
+include_once "includes/css_js.inc.php";
 
 if (isset($_GET['id'])) {
-    $id = (int) $_GET['id'];
-
- 
+    $battle_id = (int) $_GET['id'];
     $stmt = connectToDB()->prepare("SELECT * FROM battles WHERE id = :id");
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+    $stmt->bindParam(':id', $battle_id, PDO::PARAM_INT);
     $stmt->execute();
     $battle = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$battle) {
+        echo "Battle not found.";
+        exit;
+    }
+
+    // Controleer afbeelding
+    $imagePath = (!empty($battle['image']) && $battle['image'] !== 'default.jpg')
+        ? 'data:image/jpeg;base64,' . base64_encode($battle['image'])
+        : 'images/3.png';
 } else {
-    echo "No battle selected.";
+    echo "No battle ID specified.";
     exit;
 }
+
+$lat = $battle['latitude'];
+$long = $battle['longitude'];
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,60 +38,69 @@ if (isset($_GET['id'])) {
     <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css" />
     <link rel="stylesheet" href="css/detail.css" />
     <script type="module" src="./dist/<?= $jsPath ?>"></script>
-<title>Detail Page</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <title>Detail Pagina</title>
 </head>
 
 <body class="detail-page">
     <section class="banner">
         <header>
             <nav>
-                <ul>
+                <ul class="nav-menu">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="#">Search Battles</a></li>
-                    <li class="logo">
-                        <img src="images/logo_ba.png" alt="logo" />
-                    </li>
-                    <li><a href="#">About</a></li>
+                    <a href="index.php" class="logo">
+                        <li>
+                            <img src="images/logo_ba.png" alt="logo" />
+                        </li>
+                    </a>
+                    <li><a href="about.php">About</a></li>
                     <li><a href="#">Admin Page</a></li>
                 </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="mobile-logo">
+                    <img src="images/logo_ba.png" alt="logo">
+                </div>
             </nav>
         </header>
 
         <main class="detail">
             <section class="info">
-                <?php if ($battle): ?>
-                    <h2><?= htmlspecialchars($battle['title']); ?></h2>
-                    <p><?= htmlspecialchars($battle['description']); ?></p>
-                <?php else: ?>
-                    <p>Battle not found.</p>
-                <?php endif; ?>
-                
+                <h2><?= htmlspecialchars($battle['title']); ?></h2>
                 <div class="readmore">
                     <div class="container">
                         <p>
+                            <?= htmlspecialchars($battle['shdescription']); ?>
                             <span class="read-more-text">
-                                <br /><?= htmlspecialchars($battle['extended_description'] ?? ''); ?>
+                                <?= htmlspecialchars($battle['description']); ?>
                             </span>
                         </p>
                     </div>
                 </div>
                 <span class="read-more-btn">Read more..</span>
+                <div class="info-block">
+                    <section class="map">
+                        <p class="click-l">Click here for location</p>
+                        <div class="maplocation" id="map"></div>
+                    </section>
+                    <p>Year: <?= htmlspecialchars($battle['year']); ?></p>
+                </div>
             </section>
 
             <section class="fullimg">
                 <div class="infoimg">
-                    <?php if (!empty($battle['image_path'])): ?>
-                        <img src="<?= htmlspecialchars($battle['image_path']); ?>" alt="Battle Image" />
-                    <?php else: ?>
-                        <img src="images/3.png" alt="Default Image" />
-                    <?php endif; ?>
+                    <img class="detail-img" src="<?= htmlspecialchars($imagePath); ?>" alt="Battle Image" />
                 </div>
             </section>
 
-            <section class="back-link">
-                <a href="index.php">Back to Battle List</a>
-            </section>
-
+            <div class="back-link">
+                <a href="index.php">Back to battle list</a>
+            </div>
         </main>
     </section>
 
@@ -94,5 +112,37 @@ if (isset($_GET['id'])) {
             <li>Cookies Policy</li>
         </ul>
     </footer>
+
+    <script>
+        var map = L.map('map').setView([<?= $lat ?>, <?= $long ?>], 10);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([<?= $lat ?>, <?= $long ?>]).addTo(map)
+            .bindPopup('<b><?= htmlspecialchars($battle['title']); ?></b><br />Location: <?= htmlspecialchars($battle['location']); ?>')
+            .openPopup();
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const map = document.querySelector(".maplocation");
+            const showmap = document.querySelector(".click-l");
+
+            if (showmap && map) {
+                showmap.addEventListener("click", () => {
+                    map.classList.toggle("active");
+                });
+
+                document.addEventListener("click", (event) => {
+                    if (!map.contains(event.target) && !showmap.contains(event.target)) {
+                        map.classList.remove("active");
+                    }
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>

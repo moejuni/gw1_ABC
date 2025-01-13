@@ -4,11 +4,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = [];
 
     // 1. Validatie van tekstvelden
-    $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
-    $year = filter_input(INPUT_POST, 'year', FILTER_SANITIZE_STRING);
-    $location = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_STRING);
-    $shdescription = filter_input(INPUT_POST, 'shdescription', FILTER_SANITIZE_STRING);
-    $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
+    $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
+    $year = filter_input(INPUT_POST, 'year', FILTER_SANITIZE_SPECIAL_CHARS);
+    $location = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_SPECIAL_CHARS);
+    $shdescription = filter_input(INPUT_POST, 'shdescription', FILTER_SANITIZE_SPECIAL_CHARS);
+    $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
 
     if (!$title || strlen($title) > 150) {
         $errors[] = "Titel mag niet langer zijn dan 150 tekens.";

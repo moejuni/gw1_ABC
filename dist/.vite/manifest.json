@@ -32,18 +32,17 @@
     "src": "images/b_img.png"
   },
   "js/index.js": {
-    "file": "assets/index-CIDahtox.js",
+    "file": "assets/index-_Na9ZDwF.js",
     "name": "index",
     "src": "js/index.js",
     "isEntry": true,
     "css": [
-      "assets/index-D8lcZEOC.css"
+      "assets/index-C8kgOZ8c.css"
     ],
     "assets": [
       "assets/framd-B_0DSNus.ttf",
       "assets/FRABK-C09GCG42.TTF",
-      "assets/b_img-CFjVDbTw.png",
-      "assets/3-lbvvasFw.png"
+      "assets/b_img-CFjVDbTw.png"
     ]
   }
 }

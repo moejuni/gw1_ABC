@@ -1,16 +1,16 @@
 @font-face {
-  font-family: 'frank';
+  font-family: "frank";
   src: url(../fonts/framd.ttf);
 }
 
 @font-face {
-  font-family: 'tekst';
+  font-family: "tekst";
   src: url(../fonts/FRABK.TTF);
 }
 
 * {
   box-sizing: border-box;
-  font-family: 'frank';
+  font-family: "frank";
 }
 
 body {
@@ -19,15 +19,105 @@ body {
 
 .banner {
   padding: 1.8rem 1.8rem;
-  background-image: url('../images/b_img.png');
+  background-image: url("../images/b_img.png");
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
   z-index: 1;
 }
 
-body header nav .burger span img {
+header nav .login-form {
+  .registered {
+    display: none;
+  }
+
+  .registered.active {
+    display: block;
+  }
+
+  .logged.active {
+    display: none;
+  }
+
+  .sub.active {
+    display: none;
+  }
+
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  gap: 10px;
+  align-items: center;
+  position: fixed;
+  background-color: #101010;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
   display: none;
+
+  label {
+    color: white;
+    font-family: "frank";
+  }
+
+  input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  #subr {
+    color: black;
+    font-family: "frank";
+    font-size: 1.2rem;
+    background-color: #b10d0d;
+    padding: 5px 1rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  .sub {
+    color: black;
+    font-family: "frank";
+    font-size: 1.2rem;
+    background-color: #b10d0d;
+    padding: 5px 1rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  p {
+    color: white;
+    font-family: "frank";
+    max-width: 200px;
+
+    a {
+      text-decoration: none;
+      color: #b10d0d;
+
+      &:hover {
+        border-bottom: solid 2px #b10d0d;
+      }
+    }
+  }
+}
+
+header nav .login-form.active {
+  display: flex;
 }
 
 header {
@@ -38,8 +128,11 @@ header {
     .moblogo {
       display: none;
     }
-  }
 
+    .hamburger {
+      display: none;
+    }
+  }
 
   ul {
     display: flex;
@@ -48,7 +141,6 @@ header {
     align-items: center;
 
     li {
-
       form {
         input {
           border: none;
@@ -75,7 +167,7 @@ header {
         color: white;
         font-size: 1.7rem;
         text-decoration: none;
-        font-family: 'frank';
+        font-family: "frank";
         position: relative;
         padding: 5px 5px;
       }
@@ -94,7 +186,6 @@ header {
         z-index: -1;
         transform-origin: right;
         border-radius: 5px;
-
       }
 
       a:hover:before {
@@ -105,16 +196,14 @@ header {
       a:hover {
         color: #b10d0d;
       }
-
     }
 
     .logo img {
       max-width: 100px;
+      cursor: pointer;
     }
   }
 }
-
-
 
 main {
   display: grid;
@@ -125,7 +214,7 @@ main {
 
     h2 {
       color: white;
-      font-family: 'frank';
+      font-family: "frank";
       font-size: 2rem;
       max-width: 400px;
       line-height: 2.2rem;
@@ -136,7 +225,7 @@ main {
       max-width: 485px;
       line-height: 1.2rem;
       padding-top: 10px;
-      font-family: 'tekst';
+      font-family: "tekst";
     }
 
     .buttons {
@@ -158,18 +247,14 @@ main {
         text-align: center;
         text-decoration: none;
         color: white;
-        font-family: 'frank';
+        font-family: "frank";
         font-size: 1.1rem;
         border-radius: 5px;
 
         &:hover {
           color: #b10d0d;
-        }
-
-        &:hover {
           background-color: antiquewhite;
         }
-
       }
 
       .con {
@@ -205,7 +290,6 @@ main {
     content: "";
     display: block;
     padding-top: 56.25%;
-    background-image: url('../images/3.png');
     background-size: cover;
     background-repeat: no-repeat;
     transition: transform 0.3s ease;
@@ -215,90 +299,26 @@ main {
     transform: scale(1.05);
   }
 
-  /* .container article:hover {
-    transition: all 0.4s ease;
-  }
-
-  .container article:hover::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--main-red);
+  .text {
     color: white;
-    background-color: #050505;
-    width: 100%;
-    padding: 0 1rem 0 1rem;
-    border-radius: 5px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    font-family: 'frank';
-    opacity: 100%;
-    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 1rem;
     text-align: center;
-    padding: 1rem 1rem;
-    opacity: 85%;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-  }
-
-  .container article::after {
-    content: "";
+    font-size: 1.3rem;
     position: absolute;
     bottom: -100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(100%);
-    background: var(--main-red);
-    color: white;
-    background-color: #050505;
     width: 100%;
-    padding: 0 1rem;
-    border-radius: 5px;
-    font-size: 1.7rem;
-    font-weight: bold;
-    font-family: 'frank';
-    opacity: 0;
-    pointer-events: none;
-    text-align: center;
-    padding: 1rem;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-  } */
+    transition: bottom 0.3s ease;
+  }
+
+  .container article:hover .text {
+    bottom: 0;
+  }
+
+  .container article:hover {
+    transform: scale(1.05);
+  }
 }
-
-main .grid .container {
-  position: relative;
-}
-
-a {
-  text-decoration: none;
-}
-
-article {
-  transition: transform 0.4s ease;
-}
-
-.text {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.85);
-  padding: 1rem;
-  text-align: center;
-  font-size: 1.3rem;
-  position: absolute;
-  bottom: -100%;
-  width: 100%;
-  transition: bottom 0.3s ease;
-
-}
-
-.container article:hover .text {
-  bottom: 0;
-}
-
-.container article:hover {
-  transform: scale(1.05);
-}
-
-
 
 footer {
   background-color: #050505;
@@ -309,7 +329,7 @@ footer {
 
   p {
     color: white;
-    font-family: 'frank';
+    font-family: "frank";
   }
 
   ul {
@@ -318,24 +338,35 @@ footer {
 
     li {
       color: white;
-      font-family: 'frank';
+      font-family: "frank";
     }
   }
 }
 
-/*
-detail page
-*/
-
-
-
+/* detail page */
 
 @media (max-width: 800px) {
-  body main .grid {
-    .container {
-      max-height: 80vh;
+  body main .grid .container {
+    max-height: 80vh;
+  }
 
-    }
+  .text {
+    transition: none;
+    bottom: 0;
+    position: static;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
+  .container article:hover .text {
+    bottom: 0;
+  }
+
+  .container article:hover {
+    transform: none;
+  }
+
+  .container article {
+    transform: none !important;
   }
 
   main .information {
@@ -344,62 +375,77 @@ detail page
     gap: 1rem;
   }
 
-
-
   body header nav .nav-menu {
-    .logo {
-      display: none;
-    }
-
     position: fixed;
     left: -100%;
     top: 30px;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.90);
+    background-color: rgba(0, 0, 0, 0.9);
     width: 70%;
     gap: 1.2rem;
     text-align: center;
     transition: 0.3s;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+  }
 
+  body header nav .nav-menu .logo {
+    display: none;
+  }
+
+  body header nav form input {
+    background-color: #b10d0d;
   }
 
   .nav-menu.active {
     left: 0;
   }
 
-
-
   body header nav .moblogo {
     display: block;
-
-    img {
-      max-width: 100px;
-      margin: 2rem;
-    }
   }
 
-  body header nav .burger span img {
-    display: block;
-    max-width: 50px;
-    margin-right: 2rem;
-    cursor: pointer;
+  body header nav .moblogo img {
+    max-width: 100px;
+    margin: 2rem;
   }
 
-  body header nav {
+  body section header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
+  body section header nav .hamburger {
+    display: block;
+    cursor: pointer;
+  }
 
+  body section header nav .hamburger .bar {
+    display: block;
+    background-color: #050505;
+    width: 50px;
+    height: 6px;
+    margin-right: 2rem;
+    margin-top: 10px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
 
+  body section header nav .hamburger.active .bar:nth-child(1) {
+    transform: scaleX(50%);
+  }
 
+  body section header nav .hamburger.active .bar:nth-child(2) {
+    transform: scaleX(65%);
+  }
+
+  body section header nav .hamburger.active .bar:nth-child(3) {
+    transform: scaleX(50%);
+  }
 }
 
 @media (max-width: 550px) {
-
   body main {
     display: flex;
     flex-direction: column-reverse;
@@ -410,12 +456,28 @@ detail page
       padding-top: 3.3rem;
     }
   }
-}
 
+  main {
+    .text {
+      transition: none;
+      bottom: 0;
+    }
+
+    .container article:hover .text {
+      bottom: 0;
+    }
+
+    .container article:hover {
+      transform: none;
+    }
+  }
+}
 
 @media (max-width: 420px) {
   body {
     header nav .nav-menu {
+      padding: 1.5rem 0;
+
       .logo {
         display: none;
       }
@@ -428,19 +490,26 @@ detail page
 
       position: fixed;
       left: -100%;
-      top: 10px;
+      top: 0px;
       flex-direction: column;
-      background-color: rgba(0, 0, 0, 0.90);
+      background-color: rgba(0, 0, 0, 0.9);
       width: 60%;
-      gap: 3rem;
+      gap: 1rem;
       text-align: center;
       transition: 0.3s;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
-
     }
+  }
+
+  body header nav form .submit {
+    margin-top: 1rem;
   }
 }
 
-
-/* responsive detail page */
+.about-main .about-text {
+  color: white;
+  padding: 2rem;
+  font-family: "tekst";
+  line-height: 18px;
+}

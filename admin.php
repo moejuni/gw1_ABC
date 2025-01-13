@@ -1,9 +1,9 @@
 <?php
-require('functions.inc.php');
-requiredLoggedIn();
+// require('functions.inc.php');
+// requiredLoggedIn();
 
 $pageTitle = "Admin home";
-require('head.inc.php');
+require('admin/header.inc.php'); // require('header.inc.php');
 
 print '<pre>';
 print_r($_SESSION);
