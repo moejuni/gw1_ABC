@@ -1,67 +1,43 @@
 <?php
 session_start();
+include_once 'db.inc.php';
+
 $error = '';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
 
-    $host = '127.0.0.1';
-    $dbname = 'groepswerk';
-    $dbuser = 'root';
-    $dbpass = 'root';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    session_start(); // Ensure the session is started
+
+    $username = $_POST['username']; // Input username
+    $password = $_POST['password']; // Input password
 
     try {
-        // Database connection
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        // Prepare and execute query
-        $sql = "SELECT * FROM users WHERE email = :username";
+        // Fetch user record from the database
+        $sql = "SELECT * FROM users WHERE username = :username";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['username' => $username]);
+        $stmt->execute([':username' => $username]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-
-
-
-        if (!$user) {
-            $error = 'User not found. Please check your username.';
-        } elseif (($password != $user['password'])) {
-            $error = 'Incorrect password. Please try again.';
-        } else {
-            // Successful login
+        if ($user && password_verify($password, $user['password'])) {
+            // Set session variables
             $_SESSION['admin_logged_in'] = true;
             $_SESSION['admin_id'] = $user['id'];
+
+            // Redirect to admin dashboard
             header('Location: indexadmin.php');
             exit;
+        } else {
+            $error = 'Invalid username or password.';
         }
     } catch (PDOException $e) {
-        // Display database connection error
-        $error = "Database error: " . htmlspecialchars($e->getMessage());
+        $error = "Database error: " . $e->getMessage();
     }
 }
 
 
-$pdo = new PDO("mysql:host=127.0.0.1;dbname=groepswerk", 'root', 'root');
-
-$sql = "SELECT * FROM users WHERE email = :username";
-$stmt = $pdo->prepare($sql);
-$stmt->execute(['username' => $username]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 ?>
-
-
-
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html>
@@ -76,7 +52,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         <h2 class="text-center">Admin Login</h2>
         <form method="POST" action="">
             <div class="mb-3">
-                <label for="username" class="form-label">Email</label>
+                <label for="username" class="form-label">Username</label>
                 <input type="text" name="username" id="username" class="form-control" required>
             </div>
             <div class="mb-3">

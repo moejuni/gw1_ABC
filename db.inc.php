@@ -6,7 +6,7 @@ function connectToDB()
     $db_user = 'root';
     $db_password = 'root';
     $db_db = 'groepswerk';
-    $db_port = 8889;
+    $db_port = 3306;
 
     try {
         $db = new PDO('mysql:host=' . $db_host . '; port=' . $db_port . '; dbname=' . $db_db, $db_user, $db_password);
