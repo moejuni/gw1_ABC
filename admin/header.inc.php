@@ -53,7 +53,7 @@ $cssFiles = array_diff(scandir($cssDir), ['.', '..']);
                         <a class="nav-link" href="list.php">List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Settings</a>
+                        <a class="nav-link" href="settings.php">Settings</a>
                     </li>
 
                 </ul>
