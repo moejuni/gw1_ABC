@@ -14,8 +14,8 @@ if (isset($_GET['id'])) {
         exit;
     }
 
-    // Controleer afbeelding
-    $imagePath = (!empty($battle['image']) && $battle['image'] !== 'default.jpg')
+    // Controleer afbeelding, bij lege afbeeldingen toont default
+    $imagePath = (!empty($battle['image']) && $battle['image'] !== 'default.jpg') //controle afbeelding
         ? 'data:image/jpeg;base64,' . base64_encode($battle['image'])
         : 'images/3.png';
 } else {
