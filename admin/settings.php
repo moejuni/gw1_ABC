@@ -2,8 +2,6 @@
 include_once "header.inc.php";
 include_once "db.inc.php";
 
-// Start een sessie om toegang te krijgen tot de ingelogde gebruiker
-session_start();
 
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
     header('Location: login.php');

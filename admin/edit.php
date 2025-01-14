@@ -29,8 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Titel mag niet langer zijn dan 150 tekens.";
     }
 
-    if (!$year || strlen($year) > 45) {
-        $errors[] = "Jaar mag niet langer zijn dan 45 tekens.";
+    if (!$year || strlen($year) > 5) {
+        $errors[] = "Jaar mag niet langer zijn dan 6 tekens.";
     }
 
     if (!$location || strlen($location) > 100) {

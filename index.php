@@ -53,11 +53,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['searchterm'])) {
                 <?php if (!empty($battles)): ?>
                     <?php foreach ($battles as $battle):
                         $imagePath = !empty($battle['image'])
-                            ? 'data:image/jpeg;base64,' . base64_encode($battle['image'])
+                            ? 'data:image/jpeg;base64,' . base64_encode($battle['image']) // base 64 zorgt ervoor dat de afbeelding wordt getoond, verwerkt binaire code
                             : 'images/3.png';
                     ?>
                         <a href="detail.php?id=<?= htmlspecialchars($battle['id']); ?>">
-                            <article style="background-image: url('<?= htmlspecialchars($imagePath) ?>'); background-size: cover; background-position: center;">
+                            <article style="background-image: url('<?= $imagePath ?>'); background-size: cover; background-position: center;">
                                 <p class="text"><?= htmlspecialchars($battle['title']); ?></p>
                             </article>
                         </a>

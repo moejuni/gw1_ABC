@@ -18,8 +18,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $errors = [];
 
 // 1. Validatie van tekstvelden
-$title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
-$year = filter_input(INPUT_POST, 'year', FILTER_SANITIZE_SPECIAL_CHARS);
+
+// Haalt de waarde van het 'title' veld uit de POST-data en ontsmet deze
+$title = filter_input(
+    INPUT_POST,                  // Geeft aan dat de invoer uit de POST-data komt
+    'title',                     // Het specifieke veld dat opgehaald wordt ('title')
+    FILTER_SANITIZE_SPECIAL_CHARS // Verwijdert speciale HTML-tekens om XSS-aanvallen te voorkomen
+);
+
+// $title bevat nu de veilige, opgeschoonde waarde van het 'title' veld$year = filter_input(INPUT_POST, 'year', FILTER_SANITIZE_SPECIAL_CHARS);
 $location = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_SPECIAL_CHARS);
 $shdescription = filter_input(INPUT_POST, 'shdescription', FILTER_SANITIZE_SPECIAL_CHARS);
 $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -45,10 +52,21 @@ if (!$description || strlen($description) > 1000) {
 }
 
 // 2. Validatie van bestand
-if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-    $fileTmpPath = $_FILES['image']['tmp_name'];
-    $fileType = mime_content_type($fileTmpPath);
-    $allowedfileTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+
+if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) // controleer of er een bestand is geüpload en of de upload succesvol was
+{
+    //     $_FILES['input_name'] = [
+    //     'name' => 'bestand.txt',         // Originele bestandsnaam
+    //     'type' => 'text/plain',          // MIME-type
+    //     'tmp_name' => '/tmp/phpYzdqkD',  // Tijdelijke opslaglocatie
+    //     'error' => 0,                    // Eventuele foutcodes (0 betekent geen fout)
+    //     'size' => 12345                  // Bestandsgrootte in bytes
+    // ];
+    $fileTmpPath = $_FILES['image']['tmp_name'];     // haal het temporaire pad op waar het geüploade bestand is opgeslagen
+
+    $fileType = mime_content_type($fileTmpPath);     // bepaal het MIME-type van het geüploade bestand
+
+    $allowedfileTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']; //mag enkel deze soorten bestanden zijn
 
     if (!in_array($fileType, $allowedfileTypes)) {
         $errors[] = "Ongeldig bestandstype. Alleen JPEG, PNG, GIF en WEBP zijn toegestaan.";
