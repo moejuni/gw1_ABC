@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && $password === $user['password']) {
-            // Login succesvol, start sessie
+            // login succesvol, start sessie
             $_SESSION['admin_logged_in'] = true;
             $_SESSION['admin_email'] = $user['email'];
             header('Location: indexadmin.php'); // Verwijs naar de adminpagina

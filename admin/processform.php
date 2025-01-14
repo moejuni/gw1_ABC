@@ -30,7 +30,7 @@ $title = filter_input(
 $location = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_SPECIAL_CHARS);
 $shdescription = filter_input(INPUT_POST, 'shdescription', FILTER_SANITIZE_SPECIAL_CHARS);
 $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
-
+$year = filter_input(INPUT_POST, 'year', FILTER_SANITIZE_SPECIAL_CHARS);
 if (!$title || strlen($title) > 150) {
     $errors[] = "Titel mag niet langer zijn dan 150 tekens.";
 }
@@ -96,6 +96,10 @@ if (empty($errors)) {
         ':description' => $description,
         ':image' => $imageData
     ]);
+    addAdminLog(
+        "Item toegevoegd",
+        "Titel: $title, Jaar: $year, Locatie: $location"
+    );
 
     echo "<div class='alert alert-success'>Battle succesvol toegevoegd!</div>";
     echo "<a href='inputform.php' class='btn btn-primary'>Nieuwe Battle Toevoegen</a>";

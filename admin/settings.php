@@ -19,13 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirmPassword = $_POST['confirm_password'];
 
     try {
-        // Haal de huidige gebruiker op uit de database
+        // haal de huidige gebruiker op uit de database
         $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->bindParam(':email', $_SESSION['admin_email'], PDO::PARAM_STR);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Controleer of het huidige wachtwoord correct is
+        // controleer of het huidige wachtwoord correct is
         if (!$user || $currentPassword !== $user['password']) {
             $error = 'Het huidige wachtwoord is onjuist.';
         } elseif ($newPassword !== $confirmPassword) {
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } elseif (strlen($newPassword) < 6) {
             $error = 'Het wachtwoord moet minimaal 6 tekens lang zijn.';
         } else {
-            // Werk gebruikersnaam en wachtwoord bij
+            // werk gebruikersnaam en wachtwoord bij
             $stmt = $pdo->prepare("UPDATE users SET email = :email, password = :password WHERE id = :id");
             $stmt->execute([
                 ':email' => $newUsername,

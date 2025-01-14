@@ -38,3 +38,14 @@ function getRecentActivities()
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+// functie om adminlog op te slaan
+function addAdminLog($action, $details)
+{
+    global $pdo;
+    $stmt = $pdo->prepare("INSERT INTO admin_logs (action, details) VALUES (:action, :details)");
+    $stmt->execute([
+        ':action' => $action,
+        ':details' => $details,
+    ]);
+}

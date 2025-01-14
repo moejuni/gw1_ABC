@@ -74,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':image' => $imageData,
             ':id' => $id
         ]);
+        addAdminLog("Item bewerkt", "Battle ID: $id, Titel: $title, Jaar: $year, Locatie: $location");
 
         echo "<div class='alert alert-success'>De battle is succesvol bijgewerkt!</div>";
         echo "<a href='list.php' class='btn btn-primary'>Terug naar de lijst</a>";

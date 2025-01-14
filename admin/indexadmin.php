@@ -61,7 +61,7 @@ $recentActivities = getRecentActivities();
                     <h5 class="card-title m-0">Actieve Gebruikers</h5>
                 </div>
                 <div class="card-body">
-                    <h1 class="display-4">12</h1>
+                    <h1 class="display-4">1</h1>
                     <p class="card-text">Ingelogde admins</p>
                 </div>
             </div>
